@@ -36,6 +36,7 @@ if ($popup) {
     $lang_module['browse_file'] = $lang_global['browse_file'];
     $sys_max_size = min($global_config['nv_max_size'], nv_converttoBytes(ini_get('upload_max_filesize')), nv_converttoBytes(ini_get('post_max_size')));
 
+    $xtpl->assign('NV_MY_DOMAIN', NV_MY_DOMAIN);
     $xtpl->assign('NV_BASE_SITEURL', NV_BASE_SITEURL);
     $xtpl->assign('ADMIN_THEME', $global_config['module_theme']);
     $xtpl->assign('NV_OP_VARIABLE', NV_OP_VARIABLE);
@@ -55,6 +56,7 @@ if ($popup) {
     $xtpl->assign('AREA', $area);
     $xtpl->assign('ALT', $alt);
     $xtpl->assign('FUNNUM', $nv_Request->get_int('CKEditorFuncNum', 'get', 0));
+    $xtpl->assign('NV_CHUNK_SIZE', $global_config['upload_chunk_size']);
 
     $sfile = ($type == 'file') ? ' selected="selected"' : '';
     $simage = ($type == 'image') ? ' selected="selected"' : '';

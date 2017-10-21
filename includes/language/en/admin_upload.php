@@ -9,8 +9,8 @@
 * @Createdate Mar 04, 2010, 08:22:00 AM
 */
 
-if (! defined('NV_ADMIN') or ! defined('NV_MAINFILE')) {
-    die( 'Stop!!!' );
+if (!defined('NV_ADMIN') or !defined('NV_MAINFILE')) {
+    die('Stop!!!');
 }
 
 $lang_translator['author'] = 'VINADES.,JSC <contact@vinades.vn>';
@@ -81,6 +81,7 @@ $lang_module['author0'] = 'of all';
 $lang_module['author1'] = 'my';
 $lang_module['uploadError1'] = 'You need to select a file on a PC or paste the file path to the URL box';
 $lang_module['uploadError2'] = 'Error: URL not in accordance with standard';
+$lang_module['uploadError3'] = 'Error: Chunk data is invalid';
 $lang_module['pubdate'] = 'Updated';
 $lang_module['newSize'] = 'Create a new image';
 $lang_module['prView'] = 'View';
@@ -127,7 +128,10 @@ $lang_module['logopostopright'] = 'Top, right';
 $lang_module['logopostopleft'] = 'Top, left';
 $lang_module['logopostopcenter'] = 'Top, Center';
 $lang_module['fileimage'] = 'image';
+$lang_module['filerelativepath'] = 'Relative path';
+$lang_module['fileabsolutepath'] = 'Absolute path';
 $lang_module['altimage'] = 'Note for image';
+$lang_module['filepathcopied'] = 'The path has been copied';
 $lang_module['uploadconfig'] = 'Upload Configuration';
 $lang_module['uploadconfig_ban_ext'] = 'Forbidden Extensions';
 $lang_module['uploadconfig_ban_mime'] = 'Forbidden Mimes';
@@ -180,4 +184,5 @@ $lang_module['upload_auto_alt'] = 'Self-defined description of the image name';
 $lang_module['upload_alt_note'] = 'Please enter a description for the file first';
 $lang_module['upload_view_thumbnail'] = 'Switch to grid view';
 $lang_module['upload_view_detail'] = 'Switch to a list view';
-$lang_module['recreatethumb_result'] = 'Recreated thumb images for';
+$lang_module['upload_chunk'] = 'Chunk Upload';
+$lang_module['upload_chunk_help'] = 'This function supports splitting the upload file into several small packages, support to upload large files to the server. If you do not intend to allow large files to upload, please leave blank above';

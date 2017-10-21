@@ -12,6 +12,12 @@ if (!defined('NV_MAINFILE')) {
     die('Stop!!!');
 }
 
+$global_code_defined = array(
+    'cat_visible_status' => array(1, 2),
+    'cat_locked_status' => 10,
+    'row_locked_status' => 20
+);
+
 $order_articles = $module_config[$module_name]['order_articles'];
 $order_articles_by = ($order_articles) ? 'weight' : 'publtime';
 $timecheckstatus = $module_config[$module_name]['timecheckstatus'];
@@ -303,11 +309,11 @@ function nv_add_block_topcat_news($catid)
     if (!nv_check_block_topcat_news($catid) and !empty($contents)) {
         $find = "/<positions>/";
         $pos = "
-		<position>
-			<name>" . strtoupper($module_name) . "_TOPCAT_" . $catid . "</name>
-			<tag>[" . strtoupper($module_name) . "_TOPCAT_" . $catid . "]</tag>
-		</position>
-			";
+        <position>
+            <name>" . strtoupper($module_name) . "_TOPCAT_" . $catid . "</name>
+            <tag>[" . strtoupper($module_name) . "_TOPCAT_" . $catid . "]</tag>
+        </position>
+            ";
         $_replace = "<positions>" . $pos;
         $contents = preg_replace($find, $_replace, $contents);
         $contents = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $contents);
@@ -325,9 +331,9 @@ function nv_add_block_topcat_news($catid)
             return false;
         } else {
             fclose($fhandle);
-            $nv_Cache->delMod('themes');
             return true;
         }
+        $nv_Cache->delMod($module_name);
     }
 }
 
@@ -340,7 +346,7 @@ function nv_add_block_topcat_news($catid)
 function nv_add_block_botcat_news($catid)
 {
 
-    global $global_config, $module_info, $module_name, $nv_Cache, $nv_Cache;
+    global $global_config, $module_info, $module_name, $nv_Cache;
 
     if (!empty($module_info['theme'])) {
         $ini_file = NV_ROOTDIR . '/themes/' . $module_info['theme'] . '/config.ini';
@@ -352,11 +358,11 @@ function nv_add_block_botcat_news($catid)
     if (!nv_check_block_block_botcat_news($catid) and !empty($contents)) {
         $find = "/<positions>/";
         $pos = "
-		<position>
-			<name>" . strtoupper($module_name) . "_BOTTOMCAT_" . $catid . "</name>
-			<tag>[" . strtoupper($module_name) . "_BOTTOMCAT_" . $catid . "]</tag>
-		</position>
-			";
+        <position>
+            <name>" . strtoupper($module_name) . "_BOTTOMCAT_" . $catid . "</name>
+            <tag>[" . strtoupper($module_name) . "_BOTTOMCAT_" . $catid . "]</tag>
+        </position>
+            ";
         $_replace = "<positions>" . $pos;
         $contents = preg_replace($find, $_replace, $contents);
         $contents = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $contents);
@@ -374,9 +380,9 @@ function nv_add_block_botcat_news($catid)
             return false;
         } else {
             fclose($fhandle);
-            $nv_Cache->delMod('themes');
             return true;
         }
+        $nv_Cache->delMod($module_name);
     }
 }
 
@@ -419,9 +425,9 @@ function nv_remove_block_topcat_news($catid)
             return false;
         } else {
             fclose($fhandle);
-            $nv_Cache->delMod('themes');
             return true;
         }
+        $nv_Cache->delMod($module_name);
     }
 }
 
@@ -464,8 +470,8 @@ function nv_remove_block_botcat_news($catid)
             return false;
         } else {
             fclose($fhandle);
-            $nv_Cache->delMod('themes');
             return true;
         }
+        $nv_Cache->delMod($module_name);
     }
 }
